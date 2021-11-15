@@ -22,19 +22,16 @@ public class Test {
     System.out.println(deck);
     Collections.shuffle(deck, new SecureRandom());
     System.out.println(deck);
-    deck.sort(new WarComparator());
+
+    deck.sort(new Comparator<Card>() {
+      private final int numRanks = Rank.values().length;
+
+      @Override
+      public int compare(Card card1, Card card2) {
+        return (card1.getRank().ordinal() + numRanks - 1) % numRanks
+            - (card2.getRank().ordinal() + numRanks - 1) % numRanks;
+      }
+    });
     System.out.println(deck);
   }
-
-  private static class WarComparator implements Comparator<Card> {
-
-    private final int numRanks = Rank.values().length;
-
-    @Override
-    public int compare(Card card1, Card card2) {
-      return (card1.getRank().ordinal() + numRanks - 1) % numRanks
-          - (card2.getRank().ordinal() + numRanks - 1) % numRanks;
-    }
-  }
-
 }
