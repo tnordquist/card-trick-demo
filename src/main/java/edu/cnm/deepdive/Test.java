@@ -24,8 +24,8 @@ public class Test {
     System.out.println(deck);
 
     int numRanks = Rank.values().length;
-    deck.sort((card1, card2) -> (card1.getRank().ordinal() + numRanks - 1) % numRanks
-        - (card2.getRank().ordinal() + numRanks - 1) % numRanks);
+    deck.sort(Comparator.comparingInt((card) ->
+            (card.getRank().ordinal() + numRanks -1) % numRanks));
     System.out.println(deck);
   }
 }
