@@ -14,7 +14,7 @@ public class Card implements Comparable<Card>{
     return rank;
   }
 
-  public Suit getSuit() {
+  public Suit getSuit()  {
     return suit;
   }
 
@@ -30,5 +30,22 @@ public class Card implements Comparable<Card>{
       comparison = rank.compareTo(other.rank);
     }
     return comparison;
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    boolean eq = false;
+    if (obj == this) {
+      eq = true;
+    } else if (obj instanceof Card) {
+      Card other = (Card) obj;
+      eq = ((rank == other.rank) && (suit == other.suit));
+    }
+    return eq;
   }
 }

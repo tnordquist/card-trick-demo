@@ -20,8 +20,10 @@ public class Trick {
     List<Card> blackPile = new ArrayList<>();
     sortCards(deck, redPile, blackPile);
     swapCards(redPile, blackPile, rng);
-    // TODO Sort the piles.
-    // TODO Count & print  the pile contents.
+    Collections.sort(redPile);
+    Collections.sort(blackPile);
+    printContents(redPile, Color.RED);
+    printContents(blackPile, Color.BLACK);
   }
 
   private static List<Card> getDeck(Random rng) {
@@ -57,4 +59,14 @@ public class Trick {
     }
   }
 
+  private static void printContents(List<Card> pile, Color color) {
+    int colorCount = 0;
+    for (Card card :
+        pile) {
+      if (card.getSuit().getColor() == color) {
+        colorCount++;
+      }
+    }
+    System.out.printf("%1$s pile contains %2$d %1$s cards: %3$s%n", color, colorCount, pile);
+  }
 }
