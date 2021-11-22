@@ -19,7 +19,8 @@ public class Card implements Comparable<Card>{
   }
 
   @Override
-  public String toString() {
+  public String toString()
+  {
     return String.format("%s %s", rank.getSymbol(), suit.getSymbol());
   }
 
@@ -34,17 +35,17 @@ public class Card implements Comparable<Card>{
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+      return super.hashCode();
   }
 
   @Override
   public boolean equals(Object obj) {
     boolean eq = false;
-    if (obj == this) {
+    if(obj == this) {
       eq = true;
-    } else if (obj instanceof Card) {
+    } else if (obj instanceof Card){
       Card other = (Card) obj;
-      eq = ((rank == other.rank) && (suit == other.suit));
+      eq = this.suit == other.suit && this.rank == other.rank;
     }
     return eq;
   }
