@@ -50,8 +50,6 @@ public class Trick {
   }
 
   private static void swapCards(List<Card> redPile, List<Card> blackPile, Random rng) {
-    // int numToSwap = rng.nextInt(
-    // redPile.size() + 1); // numToSwap before determining and using the smaller pile.
     int numToSwap = rng.nextInt(Math.min(redPile.size(), blackPile.size()) + 1);
     for (int i = 0; i < numToSwap; i++) {
       blackPile.add(redPile.remove(0));
@@ -61,12 +59,11 @@ public class Trick {
 
   private static void printContents(List<Card> pile, Color color) {
     int colorCount = 0;
-    for (Card card :
-        pile) {
+    for (Card card : pile) {
       if (card.getSuit().getColor() == color) {
         colorCount++;
       }
     }
-    System.out.printf("%1$s pile contains %2$d %1$s cards: %3$s%n", color, colorCount, pile);
+    System.out.printf("%1$s pile contains %2$d %1$s card%4$s:%3$s%n", color, colorCount, pile, (colorCount==1) ? "": "s");
   }
 }
